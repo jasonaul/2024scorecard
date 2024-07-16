@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maryland LCV Scorecard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --background-color: #ecf0f1;
+            --success-color: #2ecc71;
+            --failure-color: #e74c3c;
+            --neutral-color: #95a5a6;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .welcome-screen {
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+.welcome-screen h2 {
+    color: #2c3e50;
+}
+
+.welcome-screen ol {
+    margin-left: 20px;
+}
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .selector {
+            background-color: var(--primary-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .delegate-info {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .delegate-photo {
+    width: 100%;
+    align-items: fle;
+    height: auto;
+    object-fit: contain;
+    max-height: 300px;
+}
+
+.vote-info {
+    display: flex;
+    align-items: center;
+}
+
+.vote {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.bill-status {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+        .delegate-details {
+            flex: 1;
+            padding: 20px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .score-box {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 10px 10px 0;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .bills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .bill-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .bill-info h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+
+        .vote {
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .vote-yes {
+            color: var(--success-color);
+        }
+
+        .vote-no {
+            color: var(--failure-color);
+        }
+
+        .bill-passed {
+            border-left: 5px solid var(--success-color);
+        }
+
+        .bill-failed {
+            border-left: 5px solid var(--failure-color);
+        }
+
+        .delegate-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.delegate-photo {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+}
+
+.delegate-details {
+    flex-grow: 1;
+    padding: 0 20px;
+}
+
+.email-representative {
+    text-align: right;
+    max-width: 300px;
+}
+
+.email-message {
+    margin-bottom: 10px;
+}
+
+.email-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .delegate-header {
+        flex-direction: column;
+    }
+
+    .delegate-photo {
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 20px;
+    }
+
+    .email-representative {
+        text-align: left;
+        max-width: 100%;
+        margin-top: 20px;
+    }
+}
+
+        @media (max-width: 768px) {
+            .delegate-photo {
+                width: 100%;
+                height: auto;
+            }
+
+            .bills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="selector">
+            <select id="chamber-select">
+                <option value="house">House of Delegates</option>
+                <option value="senate">Senate</option>
+            </select>
+            <select id="representative-select">
+                <option value="">Select Representative</option>
+            </select>
+            <select id="district-select">
+                <option value="">Select District</option>
+            </select>
+        </div>
+        <div class="delegate-info">
+            <img src="" alt="" class="delegate-photo">
+            <div class="delegate-details">
+                <h2></h2>
+                <div class="score-box"></div>
+                <div class="score-box"></div>
+                <div class="bills-container"></div>
+            </div>
+        </div>
+    </div>
+    <script src="scorecard.js">
+
+    </script>
+</body>
+</html>
